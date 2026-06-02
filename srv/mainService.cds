@@ -1,0 +1,6 @@
+namespace mainService;
+
+    service MainService
+    {
+        
+    }

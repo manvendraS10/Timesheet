@@ -1,0 +1,299 @@
+<mvc:View
+    controllerName="project1.controller.View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+    <SplitApp
+        id="SplitAppDemo"
+        initialMaster="masterPage"
+        initialDetail="dashboardPage">
+
+        <!-- Master Pages -->
+        <masterPages>
+
+            <Page
+                id="masterPage"
+                title="Menu">
+
+                <List itemPress=".onListItemPress">
+
+                    <items>
+
+                        <StandardListItem
+                            title="Admin"
+                            type="Active"
+                            custom:to="adminPage" />
+
+                        <StandardListItem
+                            title="Project Allocation"
+                            type="Active"
+                            custom:to="allocationPage" />
+
+                        <StandardListItem
+                            title="Timesheet"
+                            type="Active"
+                            custom:to="timesheetPage" />
+
+                        <StandardListItem
+                            title="Leave Management"
+                            type="Active"
+                            custom:to="leavePage" />
+
+                        <StandardListItem
+                            title="Reports"
+                            type="Active"
+                            custom:to="reportPage" />
+
+                    </items>
+
+                </List>
+
+            </Page>
+
+        </masterPages>
+
+        <!-- Detail Pages -->
+        <detailPages>
+
+            <!-- Dashboard -->
+            <Page
+                id="dashboardPage"
+                title="Dashboard">
+
+                <content>
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Title text="Project Allocation &amp; Timesheet Management System" />
+
+                        <Text text="Welcome to the Dashboard." />
+
+                    </VBox>
+
+                </content>
+
+            </Page>
+
+            <!-- Admin Page -->
+<Page
+    id="adminPage"
+    title="Admin"
+    showNavButton="true"
+    navButtonPress=".onPressDetailBack">
+
+    <content>
+
+        <VBox
+            class="sapUiLargeMargin"
+            width="40%">
+
+            <Title
+                text="Administrator Profile"
+                level="H2" />
+
+            <f:SimpleForm
+                editable="false"
+                layout="ResponsiveGridLayout">
+
+                <Label text="Admin ID" />
+                <Text text="ADM001" />
+
+                <Label text="Name" />
+                <Text text="System Administrator" />
+
+                <Label text="Email" />
+                <Text text="admin@company.com" />
+
+                <Label text="Role" />
+                <Text text="Project Manager" />
+
+                <Label text="Department" />
+                <Text text="IT Department" />
+
+                <Label text="Location" />
+                <Text text="Dubai Office" />
+
+            </f:SimpleForm>
+
+        </VBox>
+
+    </content>
+
+</Page>
+
+            <!-- Project Allocation -->
+            <Page
+                id="allocationPage"
+                title="Project Allocation"
+                showNavButton="true"
+                navButtonPress=".onPressDetailBack">
+
+                <content>
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Label text="Employee ID" />
+                        <Input placeholder="Enter Employee ID" />
+
+                        <Label text="Employee Name" />
+                        <Input placeholder="Enter Employee Name" />
+
+                        <Label text="Project Name" />
+                        <Input placeholder="Enter Project Name" />
+
+                        <Label text="Start Date" />
+                        <DatePicker />
+
+                        <Label text="End Date" />
+                        <DatePicker />
+
+                        <Button
+                            text="Allocate Project"
+                            type="Emphasized"
+                            class="sapUiSmallMarginTop" />
+
+                    </VBox>
+
+                </content>
+
+            </Page>
+
+            <!-- Timesheet Entry -->
+            <Page
+                id="timesheetPage"
+                title="Timesheet"
+                showNavButton="true"
+                navButtonPress=".onPressDetailBack">
+
+                <content>
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Label text="Project Name" />
+                        <Input placeholder="Enter Project Name" />
+
+                        <Label text="Work Date" />
+                        <DatePicker />
+
+                        <Label text="Hours Worked" />
+                        <Input
+                            type="Number"
+                            placeholder="Enter Hours" />
+
+                        <Label text="Task Description" />
+                        <TextArea
+                            rows="4"
+                            placeholder="Enter Task Details" />
+
+                        <Button
+                            text="Submit Timesheet"
+                            type="Emphasized"
+                            class="sapUiSmallMarginTop" />
+
+                    </VBox>
+
+                </content>
+
+            </Page>
+
+            <!-- Leave Management -->
+            <Page
+                id="leavePage"
+                title="Leave Management"
+                showNavButton="true"
+                navButtonPress=".onPressDetailBack">
+
+                <content>
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Title text="Leave Request Form" />
+
+                        <Label text="Employee ID" />
+                        <Input
+                            id="empId"
+                            placeholder="Enter Employee ID" />
+
+                        <Label text="Employee Name" />
+                        <Input
+                            id="empName"
+                            placeholder="Enter Employee Name" />
+
+                        <Label text="Leave Type" />
+                        <Select id="leaveType">
+
+                            <items>
+
+                                <core:Item
+                                    key="CL"
+                                    text="Casual Leave" />
+
+                                <core:Item
+                                    key="SL"
+                                    text="Sick Leave" />
+
+                                <core:Item
+                                    key="PL"
+                                    text="Privilege Leave" />
+
+                                <core:Item
+                                    key="LOP"
+                                    text="Leave Without Pay" />
+
+                            </items>
+
+                        </Select>
+
+                        <Label text="Start Date" />
+                        <DatePicker id="leaveStartDate" />
+
+                        <Label text="End Date" />
+                        <DatePicker id="leaveEndDate" />
+
+                        <Label text="Reason" />
+                        <TextArea
+                            id="leaveReason"
+                            rows="4"
+                            placeholder="Enter Leave Reason" />
+
+                        <Button
+                            text="Submit Leave Request"
+                            type="Emphasized"
+                            press=".onSubmitLeave"
+                            class="sapUiSmallMarginTop" />
+
+                    </VBox>
+
+                </content>
+
+            </Page>
+
+            <!-- Reports -->
+            <Page
+                id="reportPage"
+                title="Reports"
+                showNavButton="true"
+                navButtonPress=".onPressDetailBack">
+
+                <content>
+
+                    <VBox class="sapUiMediumMargin">
+
+                        <Title text="Reports" />
+
+                        <Text text="Project allocation and timesheet reports will be displayed here." />
+
+                    </VBox>
+
+                </content>
+
+            </Page>
+
+        </detailPages>
+
+    </SplitApp>
+
+</mvc:View>

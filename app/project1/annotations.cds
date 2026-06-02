@@ -1,0 +1,1 @@
+using mainService.MainService as service from '../../srv/mainService';
